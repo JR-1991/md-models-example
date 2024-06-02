@@ -21,7 +21,7 @@ jobs:
         run: cargo install --git https://github.com/JR-1991/md-models.git
 
       - name: Generate Python code
-        run: md-models -i model.md -o classes.py -l python-dataclass
+        run: md-models convert -i model.md -o classes.py -t python-dataclass
 
       - name: "Pushing API"
         shell: "bash"
