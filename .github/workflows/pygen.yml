@@ -1,0 +1,37 @@
+name: Python generator
+
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Install MD-Models
+        run: cargo install --git https://github.com/JR-1991/md-models.git
+
+      - name: Generate Python code
+        run: md-models -i model.md -o classes.py -l python-dataclass
+
+      - name: "Pushing API"
+        shell: "bash"
+        run: |
+          if [[ `git status --porcelain` ]]; then
+              git add --all
+              git config --global user.name 'sdRDM Bot'
+              git config --global user.email 'sdRDM@bot.com'
+              git commit -am "API update"
+              git push
+          else
+            echo "Nothing changed!"
+          fi
