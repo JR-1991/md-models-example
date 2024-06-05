@@ -1,0 +1,10 @@
+[meta]
+name = "PyEnzyme"
+description = "Generate Python classes, Typescript types and various schemes from a markdown model"
+paths = ["specifications/enzymeml.md"]
+
+[generate]
+shex = { out = "schemes/enzymeml.shex" }
+json-schema = { out = "schemes/enzymeml.json", root = "EnzymeMLDocument" }
+xml-schema = { out = "schemes/enzymeml.xsd" }
+python-dataclass = { out = "python/pyenzyme/models.py" }

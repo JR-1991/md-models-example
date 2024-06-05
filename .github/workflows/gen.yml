@@ -20,17 +20,25 @@ jobs:
       - name: Install MD-Models
         run: cargo install --git https://github.com/JR-1991/md-models.git
 
-      - name: Generate Python code
-        run: md-models convert -i model.md -o classes.py -t python-dataclass
+      - name: Run the generation pipeline
+        run: md-models pipeline -i gen.yml
+
+      - name: Run Ruff Format
+        uses: chartboost/ruff-action@v1
+
+      - uses: chartboost/ruff-action@v1
+        with:
+          changed-files: "true"
+          args: "format"
 
       - name: "Pushing API"
         shell: "bash"
         run: |
           if [[ `git status --porcelain` ]]; then
               git add --all
-              git config --global user.name 'sdRDM Bot'
-              git config --global user.email 'sdRDM@bot.com'
-              git commit -am "API update"
+              git config --global user.name 'MD-Models Bot'
+              git config --global user.email 'mdmodels@bot.com'
+              git commit -am "Pipeline update"
               git push
           else
             echo "Nothing changed!"
