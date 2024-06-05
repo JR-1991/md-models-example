@@ -23,10 +23,8 @@ jobs:
       - name: Run the generation pipeline
         run: md-models pipeline -i gen.toml
 
-      - name: Run Ruff Format
+      - name: Format the generated code
         uses: chartboost/ruff-action@v1
-
-      - uses: chartboost/ruff-action@v1
         with:
           changed-files: "true"
           args: "format --fix"
