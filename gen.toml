@@ -8,3 +8,4 @@ shex = { out = "schemes/enzymeml.shex" }
 json-schema = { out = "schemes/enzymeml.json", root = "EnzymeMLDocument" }
 xml-schema = { out = "schemes/enzymeml.xsd" }
 python-dataclass = { out = "python/pyenzyme/models.py" }
+compact-markdown = { out = "specifications/enzymeml.md" }
