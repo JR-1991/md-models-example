@@ -24,14 +24,56 @@
             <xs:element name="references" type="xs:string"  maxOccurs="unbounded"/>
             <xs:element name="created" type="xs:string" />
             <xs:element name="modified" type="xs:string" />
-            <xs:element name="creators" type="CreatorType"  maxOccurs="unbounded"/>
-            <xs:element name="vessels" type="VesselType"  maxOccurs="unbounded"/>
-            <xs:element name="proteins" type="ProteinType"  maxOccurs="unbounded"/>
-            <xs:element name="complexes" type="ComplexType"  maxOccurs="unbounded"/>
-            <xs:element name="reactants" type="ReactantType"  maxOccurs="unbounded"/>
-            <xs:element name="reactions" type="ReactionType"  maxOccurs="unbounded"/>
+            <xs:element name="creators">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Creator" type="CreatorType"  maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="vessels">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Vessel" type="VesselType"  maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="proteins">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Protein" type="ProteinType"  maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="complexes">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Complex" type="ComplexType"  maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="reactants">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Reactant" type="ReactantType"  maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="reactions">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Reaction" type="ReactionType"  maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="conditions" type="ReactionConditionsType" />
-            <xs:element name="measurements" type="MeasurementType"  maxOccurs="unbounded"/>
+            <xs:element name="measurements">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Measurement" type="MeasurementType"  maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="kinetic_model" type="KineticModelType" />
         </xs:sequence>
     </xs:complexType>
@@ -94,7 +136,13 @@
         <xs:sequence>
             <xs:element name="name" type="xs:string" />
             <xs:element name="reversible" type="xs:boolean" />
-            <xs:element name="species" type="ReactionSpeciesType"  maxOccurs="unbounded"/>
+            <xs:element name="species">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ReactionSpecies" type="ReactionSpeciesType"  maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="modifiers" type="xs:string"  maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
@@ -120,8 +168,20 @@
     <xs:complexType name="KineticModelType">
         <xs:sequence>
             <xs:element name="name" type="xs:string" />
-            <xs:element name="strings" type="RateLawType"  maxOccurs="unbounded" minOccurs="1"/>
-            <xs:element name="parameters" type="KineticParameterType"  maxOccurs="unbounded"/>
+            <xs:element name="strings">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="RateLaw" type="RateLawType"  maxOccurs="unbounded" minOccurs="1"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="parameters">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="KineticParameter" type="KineticParameterType"  maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
     
@@ -151,7 +211,13 @@
     <xs:complexType name="MeasurementType">
         <xs:sequence>
             <xs:element name="name" type="xs:string" />
-            <xs:element name="species" type="MeasurementDataType"  maxOccurs="unbounded"/>
+            <xs:element name="species">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="MeasurementData" type="MeasurementDataType"  maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="group_id" type="xs:string" />
         </xs:sequence>
     </xs:complexType>
