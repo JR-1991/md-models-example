@@ -87,6 +87,53 @@
   },
   "description": "This is the root object that composes all objects found in an EnzymeML document. It also includes general metadata such as the name of the document, when it was created/modified and references to publications, databases and arbitrary links to the web.",
   "definitions": {
+    "ReactionConditions": {
+      "title": "ReactionConditions",
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "title": "temperature",
+          "type": "number",
+          "description": "Numeric value of the temperature of the reaction."
+        },
+        "temperature_string": {
+          "title": "temperature_string",
+          "type": "string",
+          "description": "string of the temperature of the reaction."
+        },
+        "ph": {
+          "title": "ph",
+          "type": "number",
+          "description": "PH value of the reaction."
+        }
+      }
+    },
+    "Creator": {
+      "title": "Creator",
+      "type": "object",
+      "properties": {
+        "given_name": {
+          "title": "given_name",
+          "term": "schema:givenName",
+          "type": "string",
+          "description": "Given name of the author or contributor."
+        },
+        "family_name": {
+          "title": "family_name",
+          "term": "schema:familyName",
+          "type": "string",
+          "description": "Family name of the author or contributor."
+        },
+        "mail": {
+          "title": "mail",
+          "term": "schema:email",
+          "type": "string",
+          "description": "Email address of the author or contributor."
+        }
+      },
+      "description": "The creator object contains all information about authors that contributed to the resulting document.",
+      "term": "schema:creator"
+    },
     "Reactant": {
       "title": "Reactant",
       "type": "object",
@@ -126,118 +173,6 @@
         }
       },
       "description": "This objects describes the reactants that were used or produced in the course of the experiment."
-    },
-    "Complex": {
-      "title": "Complex",
-      "type": "object",
-      "properties": {
-        "participants": {
-          "title": "participants",
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Array of IDs the complex contains"
-        }
-      },
-      "description": "This object describes complexes made of reactants and/or proteins that were used or produced in the course of the experiment."
-    },
-    "ReactionConditions": {
-      "title": "ReactionConditions",
-      "type": "object",
-      "properties": {
-        "temperature": {
-          "title": "temperature",
-          "type": "number",
-          "description": "Numeric value of the temperature of the reaction."
-        },
-        "temperature_string": {
-          "title": "temperature_string",
-          "type": "string",
-          "description": "string of the temperature of the reaction."
-        },
-        "ph": {
-          "title": "ph",
-          "type": "number",
-          "description": "PH value of the reaction."
-        }
-      }
-    },
-    "Measurement": {
-      "title": "Measurement",
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "name",
-          "type": "string",
-          "description": "Name of the measurement"
-        },
-        "species": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MeasurementData"
-          },
-          "description": "Species of the measurement."
-        },
-        "group_id": {
-          "title": "group_id",
-          "type": "string",
-          "description": "User-defined group ID to signalize relationships between measurements."
-        }
-      },
-      "description": "This object describes the result of a measurement, which includes time course data of any type defined in DataTypes. It includes initial concentrations of all species used in a single measurement."
-    },
-    "Creator": {
-      "title": "Creator",
-      "type": "object",
-      "properties": {
-        "given_name": {
-          "title": "given_name",
-          "term": "schema:givenName",
-          "type": "string",
-          "description": "Given name of the author or contributor."
-        },
-        "family_name": {
-          "title": "family_name",
-          "term": "schema:familyName",
-          "type": "string",
-          "description": "Family name of the author or contributor."
-        },
-        "mail": {
-          "title": "mail",
-          "term": "schema:email",
-          "type": "string",
-          "description": "Email address of the author or contributor."
-        }
-      },
-      "description": "The creator object contains all information about authors that contributed to the resulting document.",
-      "term": "schema:creator"
-    },
-    "KineticModel": {
-      "title": "KineticModel",
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "name",
-          "type": "string",
-          "description": "Name of the kinetic law."
-        },
-        "strings": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RateLaw"
-          },
-          "description": "string for the kinetic law."
-        },
-        "parameters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/KineticParameter"
-          },
-          "description": "List of estimated parameters."
-        }
-      },
-      "description": "This object describes a kinetic model that was derived from the experiment."
     },
     "Protein": {
       "title": "Protein",
@@ -292,6 +227,63 @@
       "description": "This objects describes the proteins that were used or formed over the course of the experiment.",
       "term": "schema:Protein"
     },
+    "Measurement": {
+      "title": "Measurement",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "type": "string",
+          "description": "Name of the measurement"
+        },
+        "species": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MeasurementData"
+          },
+          "description": "Species of the measurement."
+        },
+        "group_id": {
+          "title": "group_id",
+          "type": "string",
+          "description": "User-defined group ID to signalize relationships between measurements."
+        }
+      },
+      "description": "This object describes the result of a measurement, which includes time course data of any type defined in DataTypes. It includes initial concentrations of all species used in a single measurement."
+    },
+    "Reaction": {
+      "title": "Reaction",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "type": "string",
+          "description": "Name of the reaction."
+        },
+        "reversible": {
+          "title": "reversible",
+          "type": "boolean",
+          "description": "Whether the reaction is reversible or irreversible",
+          "default": "False"
+        },
+        "species": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReactionSpecies"
+          },
+          "description": "List of reaction elements that are part of the reaction."
+        },
+        "modifiers": {
+          "title": "modifiers",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of reaction elements that are not part of the reaction but influence it."
+        }
+      },
+      "description": "This object describes a chemical or enzymatic reaction that was investigated in the course of the experiment. All species used within this object need to be part of the data model."
+    },
     "Vessel": {
       "title": "Vessel",
       "type": "object",
@@ -329,38 +321,46 @@
       "description": "This object describes vessels in which the experiment has been carried out. These can include any type of vessel used in biocatalytic experiments.",
       "term": "OBO:OBI_0400081"
     },
-    "Reaction": {
-      "title": "Reaction",
+    "KineticModel": {
+      "title": "KineticModel",
       "type": "object",
       "properties": {
         "name": {
           "title": "name",
           "type": "string",
-          "description": "Name of the reaction."
+          "description": "Name of the kinetic law."
         },
-        "reversible": {
-          "title": "reversible",
-          "type": "boolean",
-          "description": "Whether the reaction is reversible or irreversible",
-          "default": "False"
-        },
-        "species": {
+        "strings": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ReactionSpecies"
+            "$ref": "#/definitions/RateLaw"
           },
-          "description": "List of reaction elements that are part of the reaction."
+          "description": "string for the kinetic law."
         },
-        "modifiers": {
-          "title": "modifiers",
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KineticParameter"
+          },
+          "description": "List of estimated parameters."
+        }
+      },
+      "description": "This object describes a kinetic model that was derived from the experiment."
+    },
+    "Complex": {
+      "title": "Complex",
+      "type": "object",
+      "properties": {
+        "participants": {
+          "title": "participants",
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "List of reaction elements that are not part of the reaction but influence it."
+          "description": "Array of IDs the complex contains"
         }
       },
-      "description": "This object describes a chemical or enzymatic reaction that was investigated in the course of the experiment. All species used within this object need to be part of the data model."
+      "description": "This object describes complexes made of reactants and/or proteins that were used or produced in the course of the experiment."
     }
   }
 }
