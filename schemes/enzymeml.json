@@ -1,0 +1,348 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "EnzymeMLDocument",
+  "type": "object",
+  "properties": {
+    "name": {
+      "title": "name",
+      "term": "schema:name",
+      "type": "string",
+      "description": "Title of the EnzymeML Document."
+    },
+    "references": {
+      "title": "references",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Contains references to publications, databases and arbitrary links to the web."
+    },
+    "created": {
+      "title": "created",
+      "type": "string",
+      "description": "string the EnzymeML document was created."
+    },
+    "modified": {
+      "title": "modified",
+      "type": "string",
+      "description": "string the EnzymeML document was modified."
+    },
+    "creators": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Creator"
+      }
+    },
+    "description": "Contains the kinetic model of the experiment.",
+    "vessels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Vessel"
+      }
+    },
+    "proteins": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Protein"
+      }
+    },
+    "complexes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Complex"
+      }
+    },
+    "reactants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Reactant"
+      }
+    },
+    "reactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Reaction"
+      }
+    },
+    "conditions": {
+      "$ref": "#/definitions/ReactionConditions"
+    },
+    "measurements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Measurement"
+      }
+    },
+    "kinetic_model": {
+      "$ref": "#/definitions/KineticModel"
+    }
+  },
+  "definitions": {
+    "Reactant": {
+      "title": "Reactant",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "term": "schema:name",
+          "type": "string"
+        },
+        "constant": {
+          "title": "constant",
+          "type": "boolean",
+          "default": "False"
+        },
+        "vessel_id": {
+          "title": "vessel_id",
+          "term": "schema:string",
+          "type": "string"
+        },
+        "canonical_smiles": {
+          "title": "canonical_smiles",
+          "type": "string",
+          "description": "Canonical Simplified Molecular-Input Line-Entry System (SMILES) encoding of the reactant."
+        },
+        "inchikey": {
+          "title": "inchikey",
+          "type": "string",
+          "description": "Hashed International Chemical string (InChIKey) encoding of the reactant."
+        },
+        "references": {
+          "title": "references",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of references to publications, database entries etc. that describe the reactant."
+        }
+      }
+    },
+    "KineticModel": {
+      "title": "KineticModel",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "type": "string",
+          "description": "Name of the kinetic law."
+        },
+        "strings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RateLaw"
+          }
+        },
+        "description": "List of estimated parameters.",
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KineticParameter"
+          }
+        }
+      }
+    },
+    "Creator": {
+      "title": "Creator",
+      "type": "object",
+      "properties": {
+        "given_name": {
+          "title": "given_name",
+          "term": "schema:givenName",
+          "type": "string",
+          "description": "Given name of the author or contributor."
+        },
+        "family_name": {
+          "title": "family_name",
+          "term": "schema:familyName",
+          "type": "string",
+          "description": "Family name of the author or contributor."
+        },
+        "mail": {
+          "title": "mail",
+          "term": "schema:email",
+          "type": "string",
+          "description": "Email address of the author or contributor."
+        }
+      },
+      "term": "schema:creator"
+    },
+    "Protein": {
+      "title": "Protein",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "term": "schema:name",
+          "type": "string"
+        },
+        "constant": {
+          "title": "constant",
+          "type": "boolean",
+          "default": "False"
+        },
+        "sequence": {
+          "title": "sequence",
+          "term": "OBO:GSSO_007262",
+          "type": "string",
+          "description": "Amino acid sequence of the protein"
+        },
+        "vessel_id": {
+          "title": "vessel_id",
+          "term": "schema:string",
+          "type": "string"
+        },
+        "ecnumber": {
+          "title": "ecnumber",
+          "type": "string",
+          "description": "EC number of the protein."
+        },
+        "organism": {
+          "title": "organism",
+          "term": "OBO:OBI_0100026",
+          "type": "string",
+          "description": "Organism the protein was expressed in."
+        },
+        "organism_tax_id": {
+          "title": "organism_tax_id",
+          "type": "string",
+          "description": "Taxonomy string of the expression host."
+        },
+        "references": {
+          "title": "references",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of references to publications, database entries etc. that describe the protein."
+        }
+      },
+      "term": "schema:Protein"
+    },
+    "Complex": {
+      "title": "Complex",
+      "type": "object",
+      "properties": {
+        "participants": {
+          "title": "participants",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of IDs the complex contains"
+        }
+      }
+    },
+    "ReactionConditions": {
+      "title": "ReactionConditions",
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "title": "temperature",
+          "type": "number",
+          "description": "Numeric value of the temperature of the reaction."
+        },
+        "temperature_string": {
+          "title": "temperature_string",
+          "type": "string",
+          "description": "string of the temperature of the reaction."
+        },
+        "ph": {
+          "title": "ph",
+          "type": "number",
+          "description": "PH value of the reaction."
+        }
+      }
+    },
+    "Measurement": {
+      "title": "Measurement",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "type": "string",
+          "description": "Name of the measurement"
+        },
+        "species": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MeasurementData"
+          }
+        },
+        "description": "Species of the measurement.",
+        "group_id": {
+          "title": "group_id",
+          "type": "string",
+          "description": "User-defined group ID to signalize relationships between measurements."
+        }
+      }
+    },
+    "Vessel": {
+      "title": "Vessel",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "term": "schema:name",
+          "type": "string",
+          "description": "Name of the used vessel."
+        },
+        "volume": {
+          "title": "volume",
+          "term": "OBO:OBI_0002139",
+          "type": "number",
+          "description": "Volumetric value of the vessel.",
+          "template_alias": "Volume value"
+        },
+        "string": {
+          "title": "string",
+          "type": "string",
+          "description": "Volumetric string of the vessel."
+        },
+        "constant": {
+          "title": "constant",
+          "type": "boolean",
+          "description": "Whether the volume of the vessel is constant or not."
+        },
+        "creator_id": {
+          "title": "creator_id",
+          "term": "schema:string",
+          "type": "string",
+          "description": "Unique string of the author."
+        }
+      },
+      "term": "OBO:OBI_0400081"
+    },
+    "Reaction": {
+      "title": "Reaction",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "type": "string",
+          "description": "Name of the reaction."
+        },
+        "reversible": {
+          "title": "reversible",
+          "type": "boolean",
+          "description": "Whether the reaction is reversible or irreversible",
+          "default": "False"
+        },
+        "species": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReactionSpecies"
+          }
+        },
+        "description": "List of reaction elements that are part of the reaction.",
+        "modifiers": {
+          "title": "modifiers",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of reaction elements that are not part of the reaction but influence it."
+        }
+      }
+    }
+  }
+}
