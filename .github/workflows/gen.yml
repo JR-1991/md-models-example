@@ -21,7 +21,7 @@ jobs:
         run: cargo install --git https://github.com/JR-1991/md-models.git
 
       - name: Run the generation pipeline
-        run: md-models pipeline -i gen.yml
+        run: md-models pipeline -i gen.toml
 
       - name: Run Ruff Format
         uses: chartboost/ruff-action@v1
