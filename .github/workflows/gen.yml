@@ -27,7 +27,7 @@ jobs:
         uses: chartboost/ruff-action@v1
         with:
           changed-files: "true"
-          args: "format --fix"
+          args: "format"
 
       - name: "Pushing API"
         shell: "bash"
