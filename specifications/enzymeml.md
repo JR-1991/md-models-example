@@ -1,325 +1,552 @@
----
-repo: "https://github.com/EnzymeML/enzymeml-specifications"
-prefixes:
-  schema: "https://schema.org/"
-  OBO: "http://purl.obolibrary.org/obo/"
----
-
 # EnzymeML
 
-EnzymeML is an data exchange format that supports the comprehensive documentation of enzymatic data by describing reaction conditions, time courses of substrate and product concentrations, the kinetic model, and the estimated kinetic constants. EnzymeML is based on the Systems Biology Markup Language, which was extended by implementing the STRENDA Guidelines. An EnzymeML document serves as a container to transfer data between experimental platforms, modeling tools, and databases. EnzymeML supports the scientific commstringy by introducing a standardized data exchange format to make enzymatic data findable, accessible, interoperable, and reusable according to the FAIR data principles.
-
-## Root objects
 
 ### EnzymeMLDocument
 
-This is the root object that composes all objects found in an EnzymeML document. It also includes general metadata such as the name of the document, when it was created/modified and references to publications, databases and arbitrary links to the web.
+- <details>
+  <summary>name</summary>
 
-- __name__
   - Type: string
-  - Description: Title of the EnzymeML Document.
   - Term: schema:name
-- references
-  - Type: string[]
-  - Description: Contains references to publications, databases and arbitrary links to the web.
-- created
+  - description: Title of the EnzymeML Document.
+
+  </details>
+- <details>
+  <summary>references</summary>
+
   - Type: string
-  - Description: string the EnzymeML document was created.
-- modified
+  - description: Contains references to publications, databases and arbitrary links to the web.
+
+  </details>
+- <details>
+  <summary>created</summary>
+
   - Type: string
-  - Description: string the EnzymeML document was modified.
-- creators
-  - Type: Creator[]
-  - Description: Contains all authors that are part of the experiment.
-- vessels
-  - Type: Vessel[]
-  - Description: Contains all vessels that are part of the experiment.
-- proteins
-  - Type: Protein[]
-  - Description: Contains all proteins that are part of the experiment.
-- complexes
-  - Type: Complex[]
-  - Description: Contains all complexes that are part of the experiment.
-- reactants
-  - Type: Reactant[]
-  - Description: Contains all reactants that are part of the experiment.
-- reactions
-  - Type: Reaction[]
-  - Description: Dictionary mapping from reaction IDs to reaction describing objects.
-- conditions
+  - description: string the EnzymeML document was created.
+
+  </details>
+- <details>
+  <summary>modified</summary>
+
+  - Type: string
+  - description: string the EnzymeML document was modified.
+
+  </details>
+- <details>
+  <summary>creators</summary>
+
+  - Type: Creator
+  - description: Contains all authors that are part of the experiment.
+
+  </details>
+- <details>
+  <summary>vessels</summary>
+
+  - Type: Vessel
+  - description: Contains all vessels that are part of the experiment.
+
+  </details>
+- <details>
+  <summary>proteins</summary>
+
+  - Type: Protein
+  - description: Contains all proteins that are part of the experiment.
+
+  </details>
+- <details>
+  <summary>complexes</summary>
+
+  - Type: Complex
+  - description: Contains all complexes that are part of the experiment.
+
+  </details>
+- <details>
+  <summary>reactants</summary>
+
+  - Type: Reactant
+  - description: Contains all reactants that are part of the experiment.
+
+  </details>
+- <details>
+  <summary>reactions</summary>
+
+  - Type: Reaction
+  - description: Dictionary mapping from reaction IDs to reaction describing objects.
+
+  </details>
+- <details>
+  <summary>conditions</summary>
+
   - Type: ReactionConditions
-  - Description: Conditions under which the reaction was carried out.
-- measurements
-  - Type: Measurement[]
-  - Description: Contains measurements that describe outcomes of an experiment.
-- kinetic_model
+  - description: Conditions under which the reaction was carried out.
+
+  </details>
+- <details>
+  <summary>measurements</summary>
+
+  - Type: Measurement
+  - description: Contains measurements that describe outcomes of an experiment.
+
+  </details>
+- <details>
+  <summary>kinetic_model</summary>
+
   - Type: KineticModel
-  - Description: Contains the kinetic model of the experiment.
+  - description: Contains the kinetic model of the experiment.
 
-## General information
+  </details>
 
-### Creator (schema:creator)
+### Creator
 
-The creator object contains all information about authors that contributed to the resulting document.
+- <details>
+  <summary>given_name</summary>
 
-- __given_name__
   - Type: string
-  - Description: Given name of the author or contributor.
   - Term: schema:givenName
-- __family_name__
+  - description: Given name of the author or contributor.
+
+  </details>
+- <details>
+  <summary>family_name</summary>
+
   - Type: string
-  - Description: Family name of the author or contributor.
   - Term: schema:familyName
-- __mail__
+  - description: Family name of the author or contributor.
+
+  </details>
+- <details>
+  <summary>mail</summary>
+
   - Type: string
-  - Description: Email address of the author or contributor.
   - Term: schema:email
+  - description: Email address of the author or contributor.
 
-## Species
+  </details>
 
-### Vessel (OBO:OBI_0400081)
+### Vessel
 
-This object describes vessels in which the experiment has been carried out. These can include any type of vessel used in biocatalytic experiments.
+- <details>
+  <summary>name</summary>
 
-- __name__
   - Type: string
-  - Description: Name of the used vessel.
   - Term: schema:name
-- __volume__
+  - description: Name of the used vessel.
+
+  </details>
+- <details>
+  <summary>volume</summary>
+
   - Type: float
-  - Description: Volumetric value of the vessel.
-  - Template_alias: Volume value
   - Term: OBO:OBI_0002139
-- __string__
+  - description: Volumetric value of the vessel.
+  - template_alias: Volume value
+
+  </details>
+- <details>
+  <summary>string</summary>
+
   - Type: string
-  - Description: Volumetric string of the vessel.
-- __constant__
+  - description: Volumetric string of the vessel.
+
+  </details>
+- <details>
+  <summary>constant</summary>
+
   - Type: boolean
-  - Description: Whether the volume of the vessel is constant or not.
-- creator_id
+  - description: Whether the volume of the vessel is constant or not.
+
+  </details>
+- <details>
+  <summary>creator_id</summary>
+
   - Type: string
-  - Description: Unique string of the author.
   - Term: schema:string
+  - description: Unique string of the author.
 
-### Protein (schema:Protein)
+  </details>
 
-This objects describes the proteins that were used or formed over the course of the experiment.
+### Protein
 
-- __name__
+- <details>
+  <summary>name</summary>
+
   - Type: string
   - Term: schema:name
-- __constant__
+
+  </details>
+- <details>
+  <summary>constant</summary>
+
   - Type: boolean
-  - Default: False
-- __sequence__
+  - default: False
+
+  </details>
+- <details>
+  <summary>sequence</summary>
+
   - Type: string
-  - Description: Amino acid sequence of the protein
   - Term: OBO:GSSO_007262
-- vessel_id
+  - description: Amino acid sequence of the protein
+
+  </details>
+- <details>
+  <summary>vessel_id</summary>
+
   - Type: string
   - Term: schema:string
-- ecnumber
-  - Type: string
-  - Description: EC number of the protein.
-- organism
-  - Type: string
-  - Description: Organism the protein was expressed in.
-  - Term: OBO:OBI_0100026
-- organism_tax_id
-  - Type: string
-  - Description: Taxonomy string of the expression host.
-- references
-  - Type: string[]
-  - Description: Array of references to publications, database entries etc. that describe the protein.
 
+  </details>
+- <details>
+  <summary>ecnumber</summary>
+
+  - Type: string
+  - description: EC number of the protein.
+
+  </details>
+- <details>
+  <summary>organism</summary>
+
+  - Type: string
+  - Term: OBO:OBI_0100026
+  - description: Organism the protein was expressed in.
+
+  </details>
+- <details>
+  <summary>organism_tax_id</summary>
+
+  - Type: string
+  - description: Taxonomy string of the expression host.
+
+  </details>
+- <details>
+  <summary>references</summary>
+
+  - Type: string
+  - description: Array of references to publications, database entries etc. that describe the protein.
+
+  </details>
 
 ### Complex
 
-This object describes complexes made of reactants and/or proteins that were used or produced in the course of the experiment.
+- <details>
+  <summary>participants</summary>
 
-- participants
-  - Type: string[]
-  - Description: Array of IDs the complex contains
+  - Type: string
+  - description: Array of IDs the complex contains
+
+  </details>
 
 ### Reactant
 
-This objects describes the reactants that were used or produced in the course of the experiment.
+- <details>
+  <summary>name</summary>
 
-- __name__
   - Type: string
   - Term: schema:name
-- __constant__
+
+  </details>
+- <details>
+  <summary>constant</summary>
+
   - Type: boolean
-  - Default: False
-- vessel_id
+  - default: False
+
+  </details>
+- <details>
+  <summary>vessel_id</summary>
+
   - Type: string
   - Term: schema:string
-- canonical_smiles
-  - Type: string
-  - Description: Canonical Simplified Molecular-Input Line-Entry System (SMILES) encoding of the reactant.
-- inchikey
-  - Type: string
-  - Description: Hashed International Chemical string (InChIKey) encoding of the reactant.
-- references
-  - Type: string[]
-  - Description: Array of references to publications, database entries etc. that describe the reactant.
 
-## EnzymeReaction
+  </details>
+- <details>
+  <summary>canonical_smiles</summary>
+
+  - Type: string
+  - description: Canonical Simplified Molecular-Input Line-Entry System (SMILES) encoding of the reactant.
+
+  </details>
+- <details>
+  <summary>inchikey</summary>
+
+  - Type: string
+  - description: Hashed International Chemical string (InChIKey) encoding of the reactant.
+
+  </details>
+- <details>
+  <summary>references</summary>
+
+  - Type: string
+  - description: Array of references to publications, database entries etc. that describe the reactant.
+
+  </details>
 
 ### Reaction
 
-This object describes a chemical or enzymatic reaction that was investigated in the course of the experiment. All species used within this object need to be part of the data model.
+- <details>
+  <summary>name</summary>
 
-- __name__
   - Type: string
-  - Description: Name of the reaction.
-- __reversible__
+  - description: Name of the reaction.
+
+  </details>
+- <details>
+  <summary>reversible</summary>
+
   - Type: boolean
-  - Description: Whether the reaction is reversible or irreversible
-  - Default: False
-- species
-  - Type: ReactionSpecies[]
-  - Description: List of reaction elements that are part of the reaction.
-- modifiers
-  - Type: string[]
-  - Description: List of reaction elements that are not part of the reaction but influence it.
+  - description: Whether the reaction is reversible or irreversible
+  - default: False
+
+  </details>
+- <details>
+  <summary>species</summary>
+
+  - Type: ReactionSpecies
+  - description: List of reaction elements that are part of the reaction.
+
+  </details>
+- <details>
+  <summary>modifiers</summary>
+
+  - Type: string
+  - description: List of reaction elements that are not part of the reaction but influence it.
+
+  </details>
 
 ### ReactionSpecies
 
-This object is part of the Reaction object and describes either an educt, product or modifier. The latter includes buffers, counter-ions as well as proteins/enzymes.
+- <details>
+  <summary>species_id</summary>
 
-- __species_id__
   - Type: string
-  - Description: Internal string to either a protein or reactant defined in the EnzymeMLDocument.
-- stoichiometry
+  - description: Internal string to either a protein or reactant defined in the EnzymeMLDocument.
+
+  </details>
+- <details>
+  <summary>stoichiometry</summary>
+
   - Type: float
-  - Description: Float number representing the associated stoichiometry.
+  - description: Float number representing the associated stoichiometry.
+
+  </details>
 
 ### ReactionConditions
 
-- temperature
-  - Type: float
-  - Description: Numeric value of the temperature of the reaction.
-- temperature_string
-  - Type: string
-  - Description: string of the temperature of the reaction.
-- ph
-  - Type: float
-  - Description: PH value of the reaction.
+- <details>
+  <summary>temperature</summary>
 
-## Modelling
+  - Type: float
+  - description: Numeric value of the temperature of the reaction.
+
+  </details>
+- <details>
+  <summary>temperature_string</summary>
+
+  - Type: string
+  - description: string of the temperature of the reaction.
+
+  </details>
+- <details>
+  <summary>ph</summary>
+
+  - Type: float
+  - description: PH value of the reaction.
+
+  </details>
 
 ### KineticModel
 
-This object describes a kinetic model that was derived from the experiment.
+- <details>
+  <summary>name</summary>
 
-- __name__
   - Type: string
-  - Description: Name of the kinetic law.
-- __strings__
-  - Type: RateLaw[]
-  - Description: string for the kinetic law.
-- parameters
-  - Type: KineticParameter[]
-  - Description: List of estimated parameters.
+  - description: Name of the kinetic law.
+
+  </details>
+- <details>
+  <summary>strings</summary>
+
+  - Type: RateLaw
+  - description: string for the kinetic law.
+
+  </details>
+- <details>
+  <summary>parameters</summary>
+
+  - Type: KineticParameter
+  - description: List of estimated parameters.
+
+  </details>
 
 ### RateLaw
 
-This object describes an ordinary differential string that is part of the kinetic model.
+- <details>
+  <summary>species_id</summary>
 
-- __species_id__
   - Type: string
-  - Description: Internal string to a species defined in the EnzymeMLDocument.
-- __string__
+  - description: Internal string to a species defined in the EnzymeMLDocument.
+
+  </details>
+- <details>
+  <summary>string</summary>
+
   - Type: string
-  - Description: string of the rate law.
+  - description: string of the rate law.
+
+  </details>
 
 ### KineticParameter
 
-This object describes the parameters of the kinetic model and can include all estimated values.
+- <details>
+  <summary>name</summary>
 
-- __name__
   - Type: string
-  - Description: Name of the estimated parameter.
-- __value__
+  - description: Name of the estimated parameter.
+
+  </details>
+- <details>
+  <summary>value</summary>
+
   - Type: float
-  - Description: Numerical value of the estimated parameter.
-- __string__
+  - description: Numerical value of the estimated parameter.
+
+  </details>
+- <details>
+  <summary>string</summary>
+
   - Type: string
-  - Description: string of the estimated parameter.
-- initial_value
-  - Type: float
-  - Description: Initial value that was used for the parameter estimation.
-- upper
-  - Type: float
-  - Description: Upper bound of the estimated parameter.
-- lower
-  - Type: float
-  - Description: Lower bound of the estimated parameter.
-- stderr
-  - Type: float
-  - Description: Standard error of the estimated parameter.
-- __constant__
+  - description: string of the estimated parameter.
+
+  </details>
+- <details>
+  <summary>constant</summary>
+
   - Type: boolean
-  - Description: Specifies if this parameter is constant
+  - description: Specifies if this parameter is constant
 
-## Time course data handling
+  </details>
+- <details>
+  <summary>initial_value</summary>
+
+  - Type: float
+  - description: Initial value that was used for the parameter estimation.
+
+  </details>
+- <details>
+  <summary>upper</summary>
+
+  - Type: float
+  - description: Upper bound of the estimated parameter.
+
+  </details>
+- <details>
+  <summary>lower</summary>
+
+  - Type: float
+  - description: Lower bound of the estimated parameter.
+
+  </details>
+- <details>
+  <summary>stderr</summary>
+
+  - Type: float
+  - description: Standard error of the estimated parameter.
+
+  </details>
 
 ### Measurement
 
-This object describes the result of a measurement, which includes time course data of any type defined in DataTypes. It includes initial concentrations of all species used in a single measurement.
+- <details>
+  <summary>name</summary>
 
-- __name__
   - Type: string
-  - Description: Name of the measurement
-- species
-  - Type: MeasurementData[]
-  - Description: Species of the measurement.
-- group_id
+  - description: Name of the measurement
+
+  </details>
+- <details>
+  <summary>species</summary>
+
+  - Type: MeasurementData
+  - description: Species of the measurement.
+
+  </details>
+- <details>
+  <summary>group_id</summary>
+
   - Type: string
-  - Description: User-defined group ID to signalize relationships between measurements.
+  - description: User-defined group ID to signalize relationships between measurements.
+
+  </details>
 
 ### MeasurementData
 
-This object describes a single entity of a measurement, which corresponds to one species. It also holds replicates which contain time course data.
+- <details>
+  <summary>species_id</summary>
 
-- __species_id__
   - Type: string
-  - Description: The string for the described reactant.
-- __init_conc__
+  - description: The string for the described reactant.
+
+  </details>
+- <details>
+  <summary>init_conc</summary>
+
   - Type: float
-  - Description: Initial concentration of the measurement data.
-- __data_type__
+  - description: Initial concentration of the measurement data.
+
+  </details>
+- <details>
+  <summary>data_type</summary>
+
   - Type: DataTypes
-  - Description: Type of data that was measured (e.g. concentration)
-- __data_string__
+  - description: Type of data that was measured (e.g. concentration)
+
+  </details>
+- <details>
+  <summary>data_string</summary>
+
   - Type: string
-  - Description: SI string of the data that was measured.
-- __time_string__
+  - description: SI string of the data that was measured.
+
+  </details>
+- <details>
+  <summary>time_string</summary>
+
   - Type: string
-  - Description: Time string of the replicate.
-- __time__
-  - Type: float[]
-  - Description: Time steps of the replicate.
-- __data__
-  - Type: float[]
-  - Description: Data that was measured.
-- __is_calculated__
+  - description: Time string of the replicate.
+
+  </details>
+- <details>
+  <summary>time</summary>
+
+  - Type: float
+  - description: Time steps of the replicate.
+
+  </details>
+- <details>
+  <summary>data</summary>
+
+  - Type: float
+  - description: Data that was measured.
+
+  </details>
+- <details>
+  <summary>is_calculated</summary>
+
   - Type: boolean
-  - Description: Whether or not the data has been generated by simulation.
-  - Default: False
+  - description: Whether or not the data has been generated by simulation.
+  - default: False
+
+  </details>
 
 ## Enumerations
 
 ### DataTypes
 
-These values are used to determine the type of time course data.
-
-```python
-CONCENTRATION = "conc"
-ABSORPTION = "abs"
-FEED = "feed"
-BIOMASS = "biomass"
-CONVERSION = "conversion"
-PEAK_AREA = "peak-area"
+```
+ABSORPTION = abs
+BIOMASS = biomass
+CONCENTRATION = conc
+CONVERSION = conversion
+FEED = feed
+PEAK_AREA = peak-area
 ```
