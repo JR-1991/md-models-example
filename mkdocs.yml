@@ -1,6 +1,9 @@
 site_name: EnzymeML
+repo_url: https://github.com/JR-1991/md-models-example
+edit_uri: edit/main/docs/
 plugins:
   - mkdocs-jupyter
+  - search
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -17,15 +20,33 @@ markdown_extensions:
   - toc:
       permalink: true
 theme:
-  name: material
-  repo_url: https://github.com/EnzymeML/enzymeml-specifications
-  repo_name: EnzymeML Specifications
+  font:
+    text: Open Sans
   icon:
-    repo: fontawesome/brands/git-alt
-    annotation: material/plus-circle-outline
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+  name: material
   features:
-    - navigation.sections
     - navigation.tabs
+    - navigation.sections
+    - navigation.path
+    - navigation.top
+    - navigation.tracking
+    - toc.follow
+    - search.suggest
+    - content.action.edit
+    - content.code.copy
   palette:
-    scheme: default
-    primary: black
+    - media: "(prefers-color-scheme: light)"
+      primary: white
+      scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: black
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
