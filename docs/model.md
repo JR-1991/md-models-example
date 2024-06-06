@@ -44,8 +44,8 @@ This page provides comprehensive information about the structure and components 
 
 
 ## Ontologies
-- [schema](https://schema.org/)
 - [OBO](http://purl.obolibrary.org/obo/)
+- [schema](https://schema.org/)
 
 
 ## Types
@@ -191,7 +191,7 @@ This object describes complexes made of reactants and/or proteins that were used
 
 __participants__ `list[string]`
 
-- Array of IDs the complex contains 
+- Array of IDs the complex contains
 
 ------
 
@@ -203,10 +203,12 @@ __name__* `string`
 
 __constant__* `boolean`
 
+- Whether the reactant is constant or not.
 - `Default`: False
 
 __vessel_id__ `string`
 
+- ID of the vessel the reactant was used in.
 
 __canonical_smiles__ `string`
 
