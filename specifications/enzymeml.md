@@ -152,6 +152,7 @@ This objects describes the reactants that were used or produced in the course of
     - Default: False
 - vessel_id
     - Type: string
+    - Description: ID of the vessel the reactant was used in.
 - canonical_smiles
     - Type: string
     - Description: Canonical Simplified Molecular-Input Line-Entry System (SMILES) encoding of the reactant.
