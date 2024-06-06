@@ -78,142 +78,20 @@
   },
   "description": "This is the root object that composes all objects found in an EnzymeML document. It also includes general metadata such as the name of the document, when it was created/modified and references to publications, databases and arbitrary links to the web.",
   "definitions": {
-    "ReactionConditions": {
-      "title": "ReactionConditions",
+    "Complex": {
+      "title": "Complex",
       "type": "object",
       "properties": {
-        "temperature": {
-          "title": "temperature",
-          "description": "Numeric value of the temperature of the reaction.",
-          "type": "number"
-        },
-        "temperature_string": {
-          "title": "temperature_string",
-          "description": "string of the temperature of the reaction.",
-          "type": "string"
-        },
-        "ph": {
-          "title": "ph",
-          "description": "PH value of the reaction.",
-          "type": "number"
-        }
-      }
-    },
-    "Measurement": {
-      "title": "Measurement",
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "name",
-          "description": "Name of the measurement",
-          "type": "string"
-        },
-        "species": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MeasurementData"
-          }
-        },
-        "group_id": {
-          "title": "group_id",
-          "description": "User-defined group ID to signalize relationships between measurements.",
-          "type": "string"
-        }
-      },
-      "description": "This object describes the result of a measurement, which includes time course data of any type defined in DataTypes. It includes initial concentrations of all species used in a single measurement."
-    },
-    "Protein": {
-      "title": "Protein",
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "name",
-          "term": "schema:name",
-          "type": "string"
-        },
-        "constant": {
-          "title": "constant",
-          "type": "boolean",
-          "default": "False"
-        },
-        "sequence": {
-          "title": "sequence",
-          "description": "Amino acid sequence of the protein",
-          "term": "OBO:GSSO_007262",
-          "type": "string"
-        },
-        "vessel_id": {
-          "title": "vessel_id",
-          "term": "schema:string",
-          "type": "string"
-        },
-        "ecnumber": {
-          "title": "ecnumber",
-          "description": "EC number of the protein.",
-          "type": "string"
-        },
-        "organism": {
-          "title": "organism",
-          "description": "Organism the protein was expressed in.",
-          "term": "OBO:OBI_0100026",
-          "type": "string"
-        },
-        "organism_tax_id": {
-          "title": "organism_tax_id",
-          "description": "Taxonomy string of the expression host.",
-          "type": "string"
-        },
-        "references": {
-          "title": "references",
-          "description": "Array of references to publications, database entries etc. that describe the protein.",
+        "participants": {
+          "title": "participants",
+          "description": "Array of IDs the complex contains",
           "type": "array",
           "items": {
             "type": "string"
           }
         }
       },
-      "description": "This objects describes the proteins that were used or formed over the course of the experiment.",
-      "term": "schema:Protein"
-    },
-    "Reactant": {
-      "title": "Reactant",
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "name",
-          "term": "schema:name",
-          "type": "string"
-        },
-        "constant": {
-          "title": "constant",
-          "type": "boolean",
-          "default": "False"
-        },
-        "vessel_id": {
-          "title": "vessel_id",
-          "term": "schema:string",
-          "type": "string"
-        },
-        "canonical_smiles": {
-          "title": "canonical_smiles",
-          "description": "Canonical Simplified Molecular-Input Line-Entry System (SMILES) encoding of the reactant.",
-          "type": "string"
-        },
-        "inchikey": {
-          "title": "inchikey",
-          "description": "Hashed International Chemical string (InChIKey) encoding of the reactant.",
-          "type": "string"
-        },
-        "references": {
-          "title": "references",
-          "description": "Array of references to publications, database entries etc. that describe the reactant.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "description": "This objects describes the reactants that were used or produced in the course of the experiment."
+      "description": "This object describes complexes made of reactants and/or proteins that were used or produced in the course of the experiment."
     },
     "Vessel": {
       "title": "Vessel",
@@ -251,21 +129,6 @@
       },
       "description": "This object describes vessels in which the experiment has been carried out. These can include any type of vessel used in biocatalytic experiments.",
       "term": "OBO:OBI_0400081"
-    },
-    "Complex": {
-      "title": "Complex",
-      "type": "object",
-      "properties": {
-        "participants": {
-          "title": "participants",
-          "description": "Array of IDs the complex contains",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "description": "This object describes complexes made of reactants and/or proteins that were used or produced in the course of the experiment."
     },
     "Creator": {
       "title": "Creator",
@@ -348,6 +211,143 @@
         }
       },
       "description": "This object describes a chemical or enzymatic reaction that was investigated in the course of the experiment. All species used within this object need to be part of the data model."
+    },
+    "ReactionConditions": {
+      "title": "ReactionConditions",
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "title": "temperature",
+          "description": "Numeric value of the temperature of the reaction.",
+          "type": "number"
+        },
+        "temperature_string": {
+          "title": "temperature_string",
+          "description": "string of the temperature of the reaction.",
+          "type": "string"
+        },
+        "ph": {
+          "title": "ph",
+          "description": "PH value of the reaction.",
+          "type": "number"
+        }
+      }
+    },
+    "Protein": {
+      "title": "Protein",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "term": "schema:name",
+          "type": "string"
+        },
+        "constant": {
+          "title": "constant",
+          "type": "boolean",
+          "default": "False"
+        },
+        "sequence": {
+          "title": "sequence",
+          "description": "Amino acid sequence of the protein",
+          "term": "OBO:GSSO_007262",
+          "type": "string"
+        },
+        "vessel_id": {
+          "title": "vessel_id",
+          "term": "schema:string",
+          "type": "string"
+        },
+        "ecnumber": {
+          "title": "ecnumber",
+          "description": "EC number of the protein.",
+          "type": "string"
+        },
+        "organism": {
+          "title": "organism",
+          "description": "Organism the protein was expressed in.",
+          "term": "OBO:OBI_0100026",
+          "type": "string"
+        },
+        "organism_tax_id": {
+          "title": "organism_tax_id",
+          "description": "Taxonomy string of the expression host.",
+          "type": "string"
+        },
+        "references": {
+          "title": "references",
+          "description": "Array of references to publications, database entries etc. that describe the protein.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "This objects describes the proteins that were used or formed over the course of the experiment.",
+      "term": "schema:Protein"
+    },
+    "Measurement": {
+      "title": "Measurement",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "description": "Name of the measurement",
+          "type": "string"
+        },
+        "species": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MeasurementData"
+          }
+        },
+        "group_id": {
+          "title": "group_id",
+          "description": "User-defined group ID to signalize relationships between measurements.",
+          "type": "string"
+        }
+      },
+      "description": "This object describes the result of a measurement, which includes time course data of any type defined in DataTypes. It includes initial concentrations of all species used in a single measurement."
+    },
+    "Reactant": {
+      "title": "Reactant",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "term": "schema:name",
+          "type": "string"
+        },
+        "constant": {
+          "title": "constant",
+          "type": "boolean",
+          "default": "False"
+        },
+        "vessel_id": {
+          "title": "vessel_id",
+          "term": "schema:string",
+          "type": "string"
+        },
+        "canonical_smiles": {
+          "title": "canonical_smiles",
+          "description": "Canonical Simplified Molecular-Input Line-Entry System (SMILES) encoding of the reactant.",
+          "type": "string"
+        },
+        "inchikey": {
+          "title": "inchikey",
+          "description": "Hashed International Chemical string (InChIKey) encoding of the reactant.",
+          "type": "string"
+        },
+        "references": {
+          "title": "references",
+          "description": "Array of references to publications, database entries etc. that describe the reactant.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "This objects describes the reactants that were used or produced in the course of the experiment."
     }
   }
 }
