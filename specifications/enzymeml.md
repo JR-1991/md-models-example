@@ -117,7 +117,6 @@ This objects describes the proteins that were used or formed over the course of 
     - Term: OBO:GSSO_007262
 - vessel_id
     - Type: string
-    - Term: schema:string
 - ecnumber
     - Type: string
     - Description: EC number of the protein.
@@ -153,7 +152,6 @@ This objects describes the reactants that were used or produced in the course of
     - Default: False
 - vessel_id
     - Type: string
-    - Term: schema:string
 - canonical_smiles
     - Type: string
     - Description: Canonical Simplified Molecular-Input Line-Entry System (SMILES) encoding of the reactant.
