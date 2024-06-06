@@ -45,7 +45,7 @@ jobs:
   deploy:
     name: Deploy Documentation
     runs-on: ubuntu-latest
-    needs: build
+    needs: generate
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
