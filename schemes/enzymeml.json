@@ -78,78 +78,6 @@
   },
   "description": "This is the root object that composes all objects found in an EnzymeML document. It also includes general metadata such as the name of the document, when it was created/modified and references to publications, databases and arbitrary links to the web.",
   "definitions": {
-    "Reactant": {
-      "title": "Reactant",
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "name",
-          "term": "schema:name",
-          "type": "string"
-        },
-        "constant": {
-          "title": "constant",
-          "type": "boolean",
-          "default": "False"
-        },
-        "vessel_id": {
-          "title": "vessel_id",
-          "term": "schema:string",
-          "type": "string"
-        },
-        "canonical_smiles": {
-          "title": "canonical_smiles",
-          "description": "Canonical Simplified Molecular-Input Line-Entry System (SMILES) encoding of the reactant.",
-          "type": "string"
-        },
-        "inchikey": {
-          "title": "inchikey",
-          "description": "Hashed International Chemical string (InChIKey) encoding of the reactant.",
-          "type": "string"
-        },
-        "references": {
-          "title": "references",
-          "description": "Array of references to publications, database entries etc. that describe the reactant.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "description": "This objects describes the reactants that were used or produced in the course of the experiment."
-    },
-    "Reaction": {
-      "title": "Reaction",
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "name",
-          "description": "Name of the reaction.",
-          "type": "string"
-        },
-        "reversible": {
-          "title": "reversible",
-          "description": "Whether the reaction is reversible or irreversible",
-          "type": "boolean",
-          "default": "False"
-        },
-        "species": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ReactionSpecies"
-          }
-        },
-        "modifiers": {
-          "title": "modifiers",
-          "description": "List of reaction elements that are not part of the reaction but influence it.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "description": "This object describes a chemical or enzymatic reaction that was investigated in the course of the experiment. All species used within this object need to be part of the data model."
-    },
     "ReactionConditions": {
       "title": "ReactionConditions",
       "type": "object",
@@ -171,55 +99,28 @@
         }
       }
     },
-    "Creator": {
-      "title": "Creator",
-      "type": "object",
-      "properties": {
-        "given_name": {
-          "title": "given_name",
-          "description": "Given name of the author or contributor.",
-          "term": "schema:givenName",
-          "type": "string"
-        },
-        "family_name": {
-          "title": "family_name",
-          "description": "Family name of the author or contributor.",
-          "term": "schema:familyName",
-          "type": "string"
-        },
-        "mail": {
-          "title": "mail",
-          "description": "Email address of the author or contributor.",
-          "term": "schema:email",
-          "type": "string"
-        }
-      },
-      "description": "The creator object contains all information about authors that contributed to the resulting document.",
-      "term": "schema:creator"
-    },
-    "KineticModel": {
-      "title": "KineticModel",
+    "Measurement": {
+      "title": "Measurement",
       "type": "object",
       "properties": {
         "name": {
           "title": "name",
-          "description": "Name of the kinetic law.",
+          "description": "Name of the measurement",
           "type": "string"
         },
-        "strings": {
+        "species": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RateLaw"
+            "$ref": "#/definitions/MeasurementData"
           }
         },
-        "parameters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/KineticParameter"
-          }
+        "group_id": {
+          "title": "group_id",
+          "description": "User-defined group ID to signalize relationships between measurements.",
+          "type": "string"
         }
       },
-      "description": "This object describes a kinetic model that was derived from the experiment."
+      "description": "This object describes the result of a measurement, which includes time course data of any type defined in DataTypes. It includes initial concentrations of all species used in a single measurement."
     },
     "Protein": {
       "title": "Protein",
@@ -274,6 +175,46 @@
       "description": "This objects describes the proteins that were used or formed over the course of the experiment.",
       "term": "schema:Protein"
     },
+    "Reactant": {
+      "title": "Reactant",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "term": "schema:name",
+          "type": "string"
+        },
+        "constant": {
+          "title": "constant",
+          "type": "boolean",
+          "default": "False"
+        },
+        "vessel_id": {
+          "title": "vessel_id",
+          "term": "schema:string",
+          "type": "string"
+        },
+        "canonical_smiles": {
+          "title": "canonical_smiles",
+          "description": "Canonical Simplified Molecular-Input Line-Entry System (SMILES) encoding of the reactant.",
+          "type": "string"
+        },
+        "inchikey": {
+          "title": "inchikey",
+          "description": "Hashed International Chemical string (InChIKey) encoding of the reactant.",
+          "type": "string"
+        },
+        "references": {
+          "title": "references",
+          "description": "Array of references to publications, database entries etc. that describe the reactant.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "This objects describes the reactants that were used or produced in the course of the experiment."
+    },
     "Vessel": {
       "title": "Vessel",
       "type": "object",
@@ -326,28 +267,87 @@
       },
       "description": "This object describes complexes made of reactants and/or proteins that were used or produced in the course of the experiment."
     },
-    "Measurement": {
-      "title": "Measurement",
+    "Creator": {
+      "title": "Creator",
+      "type": "object",
+      "properties": {
+        "given_name": {
+          "title": "given_name",
+          "description": "Given name of the author or contributor.",
+          "term": "schema:givenName",
+          "type": "string"
+        },
+        "family_name": {
+          "title": "family_name",
+          "description": "Family name of the author or contributor.",
+          "term": "schema:familyName",
+          "type": "string"
+        },
+        "mail": {
+          "title": "mail",
+          "description": "Email address of the author or contributor.",
+          "term": "schema:email",
+          "type": "string"
+        }
+      },
+      "description": "The creator object contains all information about authors that contributed to the resulting document.",
+      "term": "schema:creator"
+    },
+    "KineticModel": {
+      "title": "KineticModel",
       "type": "object",
       "properties": {
         "name": {
           "title": "name",
-          "description": "Name of the measurement",
+          "description": "Name of the kinetic law.",
           "type": "string"
+        },
+        "strings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RateLaw"
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KineticParameter"
+          }
+        }
+      },
+      "description": "This object describes a kinetic model that was derived from the experiment."
+    },
+    "Reaction": {
+      "title": "Reaction",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "description": "Name of the reaction.",
+          "type": "string"
+        },
+        "reversible": {
+          "title": "reversible",
+          "description": "Whether the reaction is reversible or irreversible",
+          "type": "boolean",
+          "default": "False"
         },
         "species": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MeasurementData"
+            "$ref": "#/definitions/ReactionSpecies"
           }
         },
-        "group_id": {
-          "title": "group_id",
-          "description": "User-defined group ID to signalize relationships between measurements.",
-          "type": "string"
+        "modifiers": {
+          "title": "modifiers",
+          "description": "List of reaction elements that are not part of the reaction but influence it.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
-      "description": "This object describes the result of a measurement, which includes time course data of any type defined in DataTypes. It includes initial concentrations of all species used in a single measurement."
+      "description": "This object describes a chemical or enzymatic reaction that was investigated in the course of the experiment. All species used within this object need to be part of the data model."
     }
   }
 }
