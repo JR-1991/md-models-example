@@ -24,12 +24,28 @@ This page provides comprehensive information about the structure and components 
         kineticmodel(KineticModel) --> kineticparameter(KineticParameter)
         measurement(Measurement) --> measurementdata(MeasurementData)
         measurementdata(MeasurementData) --> datatypes(DataTypes)
+    
+        click enzymemldocument "#enzymemldocument" "Go to EnzymeMLDocument"
+        click creator "#creator" "Go to Creator"
+        click vessel "#vessel" "Go to Vessel"
+        click protein "#protein" "Go to Protein"
+        click complex "#complex" "Go to Complex"
+        click reactant "#reactant" "Go to Reactant"
+        click reaction "#reaction" "Go to Reaction"
+        click reactionspecies "#reactionspecies" "Go to ReactionSpecies"
+        click reactionconditions "#reactionconditions" "Go to ReactionConditions"
+        click kineticmodel "#kineticmodel" "Go to KineticModel"
+        click ratelaw "#ratelaw" "Go to RateLaw"
+        click kineticparameter "#kineticparameter" "Go to KineticParameter"
+        click measurement "#measurement" "Go to Measurement"
+        click measurementdata "#measurementdata" "Go to MeasurementData"
+        click datatypes "#datatypes" "Go to DataTypes"
     ```
 
 
 ## Ontologies
-- [OBO](http://purl.obolibrary.org/obo/)
 - [schema](https://schema.org/)
+- [OBO](http://purl.obolibrary.org/obo/)
 
 
 ## Types
