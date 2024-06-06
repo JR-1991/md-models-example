@@ -191,7 +191,7 @@ This object describes complexes made of reactants and/or proteins that were used
 
 __participants__ `list[string]`
 
-- Array of IDs the complex contains
+- Array of IDs the complex contains 
 
 ------
 
