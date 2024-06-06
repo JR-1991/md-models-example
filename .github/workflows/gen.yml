@@ -1,7 +1,9 @@
 name: Python generator
 
 on:
-  - push
+  push:
+    paths:
+      - "specifications/*.md"
 
 jobs:
   build:
