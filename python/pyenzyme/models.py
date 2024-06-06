@@ -41,8 +41,8 @@ class EnzymeMLDocument:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
             "name": "schema:name",
         },
     )
@@ -195,8 +195,8 @@ class Creator:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
             "given_name": "schema:givenName",
             "family_name": "schema:familyName",
             "mail": "schema:email",
@@ -226,8 +226,8 @@ class Vessel:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
             "name": "schema:name",
             "volume": "OBO:OBI_0002139",
             "creator_id": "schema:string",
@@ -260,8 +260,8 @@ class Protein:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
             "name": "schema:name",
             "sequence": "OBO:GSSO_007262",
             "vessel_id": "schema:string",
@@ -290,8 +290,8 @@ class Complex:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
         },
     )
 
@@ -321,8 +321,8 @@ class Reactant:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
             "name": "schema:name",
             "vessel_id": "schema:string",
         },
@@ -352,8 +352,8 @@ class Reaction:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
         },
     )
 
@@ -391,8 +391,8 @@ class ReactionSpecies:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
         },
     )
 
@@ -419,8 +419,8 @@ class ReactionConditions:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
         },
     )
 
@@ -447,8 +447,8 @@ class KineticModel:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
         },
     )
 
@@ -513,8 +513,8 @@ class RateLaw:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
         },
     )
 
@@ -546,8 +546,8 @@ class KineticParameter:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
         },
     )
 
@@ -574,8 +574,8 @@ class Measurement:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
         },
     )
 
@@ -634,8 +634,8 @@ class MeasurementData:
         metadata=config(field_name="@context"),
         default_factory=lambda: {
             "md": "https://github.com/EnzymeML/enzymeml-specifications",
-            "schema": "https://schema.org/",
             "OBO": "http://purl.obolibrary.org/obo/",
+            "schema": "https://schema.org/",
         },
     )
 

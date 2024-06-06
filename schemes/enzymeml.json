@@ -78,21 +78,6 @@
   },
   "description": "This is the root object that composes all objects found in an EnzymeML document. It also includes general metadata such as the name of the document, when it was created/modified and references to publications, databases and arbitrary links to the web.",
   "definitions": {
-    "Complex": {
-      "title": "Complex",
-      "type": "object",
-      "properties": {
-        "participants": {
-          "title": "participants",
-          "description": "Array of IDs the complex contains",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "description": "This object describes complexes made of reactants and/or proteins that were used or produced in the course of the experiment."
-    },
     "Reactant": {
       "title": "Reactant",
       "type": "object",
@@ -133,50 +118,42 @@
       },
       "description": "This objects describes the reactants that were used or produced in the course of the experiment."
     },
-    "ReactionConditions": {
-      "title": "ReactionConditions",
-      "type": "object",
-      "properties": {
-        "temperature": {
-          "title": "temperature",
-          "description": "Numeric value of the temperature of the reaction.",
-          "type": "number"
-        },
-        "temperature_string": {
-          "title": "temperature_string",
-          "description": "string of the temperature of the reaction.",
-          "type": "string"
-        },
-        "ph": {
-          "title": "ph",
-          "description": "PH value of the reaction.",
-          "type": "number"
-        }
-      }
-    },
-    "KineticModel": {
-      "title": "KineticModel",
+    "Vessel": {
+      "title": "Vessel",
       "type": "object",
       "properties": {
         "name": {
           "title": "name",
-          "description": "Name of the kinetic law.",
+          "description": "Name of the used vessel.",
+          "term": "schema:name",
           "type": "string"
         },
-        "strings": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RateLaw"
-          }
+        "volume": {
+          "title": "volume",
+          "description": "Volumetric value of the vessel.",
+          "term": "OBO:OBI_0002139",
+          "type": "number",
+          "template_alias": "Volume value"
         },
-        "parameters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/KineticParameter"
-          }
+        "string": {
+          "title": "string",
+          "description": "Volumetric string of the vessel.",
+          "type": "string"
+        },
+        "constant": {
+          "title": "constant",
+          "description": "Whether the volume of the vessel is constant or not.",
+          "type": "boolean"
+        },
+        "creator_id": {
+          "title": "creator_id",
+          "description": "Unique string of the author.",
+          "term": "schema:string",
+          "type": "string"
         }
       },
-      "description": "This object describes a kinetic model that was derived from the experiment."
+      "description": "This object describes vessels in which the experiment has been carried out. These can include any type of vessel used in biocatalytic experiments.",
+      "term": "OBO:OBI_0400081"
     },
     "Creator": {
       "title": "Creator",
@@ -204,28 +181,26 @@
       "description": "The creator object contains all information about authors that contributed to the resulting document.",
       "term": "schema:creator"
     },
-    "Measurement": {
-      "title": "Measurement",
+    "ReactionConditions": {
+      "title": "ReactionConditions",
       "type": "object",
       "properties": {
-        "name": {
-          "title": "name",
-          "description": "Name of the measurement",
+        "temperature": {
+          "title": "temperature",
+          "description": "Numeric value of the temperature of the reaction.",
+          "type": "number"
+        },
+        "temperature_string": {
+          "title": "temperature_string",
+          "description": "string of the temperature of the reaction.",
           "type": "string"
         },
-        "species": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MeasurementData"
-          }
-        },
-        "group_id": {
-          "title": "group_id",
-          "description": "User-defined group ID to signalize relationships between measurements.",
-          "type": "string"
+        "ph": {
+          "title": "ph",
+          "description": "PH value of the reaction.",
+          "type": "number"
         }
-      },
-      "description": "This object describes the result of a measurement, which includes time course data of any type defined in DataTypes. It includes initial concentrations of all species used in a single measurement."
+      }
     },
     "Reaction": {
       "title": "Reaction",
@@ -258,6 +233,68 @@
         }
       },
       "description": "This object describes a chemical or enzymatic reaction that was investigated in the course of the experiment. All species used within this object need to be part of the data model."
+    },
+    "Measurement": {
+      "title": "Measurement",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "description": "Name of the measurement",
+          "type": "string"
+        },
+        "species": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MeasurementData"
+          }
+        },
+        "group_id": {
+          "title": "group_id",
+          "description": "User-defined group ID to signalize relationships between measurements.",
+          "type": "string"
+        }
+      },
+      "description": "This object describes the result of a measurement, which includes time course data of any type defined in DataTypes. It includes initial concentrations of all species used in a single measurement."
+    },
+    "Complex": {
+      "title": "Complex",
+      "type": "object",
+      "properties": {
+        "participants": {
+          "title": "participants",
+          "description": "Array of IDs the complex contains",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "This object describes complexes made of reactants and/or proteins that were used or produced in the course of the experiment."
+    },
+    "KineticModel": {
+      "title": "KineticModel",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "name",
+          "description": "Name of the kinetic law.",
+          "type": "string"
+        },
+        "strings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RateLaw"
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KineticParameter"
+          }
+        }
+      },
+      "description": "This object describes a kinetic model that was derived from the experiment."
     },
     "Protein": {
       "title": "Protein",
@@ -311,43 +348,6 @@
       },
       "description": "This objects describes the proteins that were used or formed over the course of the experiment.",
       "term": "schema:Protein"
-    },
-    "Vessel": {
-      "title": "Vessel",
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "name",
-          "description": "Name of the used vessel.",
-          "term": "schema:name",
-          "type": "string"
-        },
-        "volume": {
-          "title": "volume",
-          "description": "Volumetric value of the vessel.",
-          "term": "OBO:OBI_0002139",
-          "type": "number",
-          "template_alias": "Volume value"
-        },
-        "string": {
-          "title": "string",
-          "description": "Volumetric string of the vessel.",
-          "type": "string"
-        },
-        "constant": {
-          "title": "constant",
-          "description": "Whether the volume of the vessel is constant or not.",
-          "type": "boolean"
-        },
-        "creator_id": {
-          "title": "creator_id",
-          "description": "Unique string of the author.",
-          "term": "schema:string",
-          "type": "string"
-        }
-      },
-      "description": "This object describes vessels in which the experiment has been carried out. These can include any type of vessel used in biocatalytic experiments.",
-      "term": "OBO:OBI_0400081"
     }
   }
 }
