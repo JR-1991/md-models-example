@@ -1,24 +1,31 @@
 site_name: EnzymeML
 plugins:
   - mkdocs-jupyter
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - toc:
+      permalink: true
 theme:
   name: material
   repo_url: https://github.com/EnzymeML/enzymeml-specifications
   repo_name: EnzymeML Specifications
   icon:
     repo: fontawesome/brands/git-alt
+    annotation: material/plus-circle-outline
   features:
     - navigation.sections
-    - navigation.expand
+    - navigation.tabs
   palette:
-    - primary: blue
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+    scheme: default
+    primary: black
