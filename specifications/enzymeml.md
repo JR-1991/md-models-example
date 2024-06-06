@@ -149,6 +149,7 @@ This objects describes the reactants that were used or produced in the course of
     - Term: schema:name
 - __constant__
     - Type: boolean
+    - Description: Whether the reactant is constant or not.
     - Default: False
 - vessel_id
     - Type: string
