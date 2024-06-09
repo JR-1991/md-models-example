@@ -81,8 +81,8 @@ This page provides comprehensive information about the structure and components 
 
 
 ## Ontologies
+- [schema](https://schema.org)
 - [OBO](http://purl.obolibrary.org/obo/)
-- [schema](https://schema.org/)
 
 
 ## Types
