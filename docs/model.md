@@ -3,7 +3,7 @@ hide:
     - navigation
 ---
 
-# EnzymeML
+# Model Reference
 
 This page provides comprehensive information about the structure and components of the data model, including detailed descriptions of the types and their properties, information on enumerations, and an overview of the ontologies used and their associated prefixes. Below, you will find a graph that visually represents the overall structure of the data model.
 
