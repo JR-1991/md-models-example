@@ -3,7 +3,7 @@ hide:
     - navigation
 ---
 
-# Model Reference
+# EnzymeML
 
 This page provides comprehensive information about the structure and components of the data model, including detailed descriptions of the types and their properties, information on enumerations, and an overview of the ontologies used and their associated prefixes. Below, you will find a graph that visually represents the overall structure of the data model.
 
@@ -82,7 +82,7 @@ This page provides comprehensive information about the structure and components 
 
 ## Ontologies
 - [OBO](http://purl.obolibrary.org/obo/)
-- [schema](https://schema.org/)
+- [schema](https://schema.org)
 
 
 ## Types
